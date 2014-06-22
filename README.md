@@ -1,11 +1,8 @@
-datasciencecoursera
-=============================================
-
 # Coursera: Getting and Cleaning Data
 # Class project
 
 ## READ ME
-=============================================
+
 
 This script assumes the data is either in a zip file "UCI HAR Dataset.zip" or in a folder called "UCI HAR Dataset" in the current working directory.
 
@@ -17,16 +14,20 @@ The summary variables are computed (see #2 below) and the raw data measurements 
 The data frames are then binded into one dataset ("data") of 10299 observations for 22 variables -  4 id variables + 18 measured variables (see #4 below).
 
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+
 Standard deviation and mean variables are computed for each of the 3 triaxial measurements (9 total). Only these variables are inlcuded in the resulting dataset ("data"). These are dentoted with "sd" and "mean" in the name of the variable.
 
 3. Uses descriptive activity names to name the activities in the data set
+
 Activity labels are added using merge based on the activity IDs after the data file is constructed.
 
 4. Appropriately labels the data set with descriptive variable names. 
+
 Variable names for measured variable are constructed on original data file names and underscores ("_") are removed. For new summary variables, "mean" and "sd" are appended respectively. Descriptive names for ID variables are also added.
 
+
 The dataset includes the following variables:
-=============================================
+
 activityid - ID of the activity performed, ranges 1 to 6.
 activitylabel - labels activities that were performed (walking, walking upstairs, walking downstairs, sitting, standing, laying)
 subject - identifies the subject who performed the activity, ranges from 1 to 30.
