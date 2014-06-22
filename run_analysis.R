@@ -1,5 +1,5 @@
 ## Coursera: Getting and Cleaning Data
-## Class project
+## Class project R script
 
 # Checking whether the dataset is present in the working directory
 if (!file.exists("UCI HAR Dataset")) {
@@ -9,17 +9,22 @@ if (!file.exists("UCI HAR Dataset")) {
     unzip("UCI HAR Dataset.zip")
   }
 }
+# Prepare necessary data objects
+data <- data.frame()
+tempData <- list()
+sets = c("train", "test")
+colname = c("subject","activityid","activitylabel")
+
+# Read in activity labels and clean up data -- lower case for the labels and remove underscores
+activityLabels <- read.table("./UCI HAR Dataset/activity_labels.txt", col.names = colname[2:3])
+activityLabels$activitylabel <- tolower(levels(activityLabels$activitylabel))
+activityLabels$activitylabel <- gsub("_", "", activityLabels$activitylabel)
+activityLabels$activitylabel <- as.factor(activityLabels$activitylabel)
 
 # For each of the two sets of data, test and train, create a list of data frames: 
 #(1) ID variables: subject ID, activity ID, activity label and a factor variable, describing whether this observation belonged to a training (train) or test set. 
 #(2) Measured variables: mean and standard deviation for each of the nine captured variables (18 total).
-sets = c("train", "test")
-data <- data.frame()
-tempData <- list()
-colname = c("subject","activityid","activitylabel")
-activityLabels <- data.frame(c(1:6), c("walking", "walkingupstairs", "walkingdownstairs", "sitting", "standing", "laying"))  
 for (j in 1:2){ 
-  colnames(activityLabels) = colname[2:3]
   subjectJ <- read.table(paste(c("./", "UCI HAR Dataset/", sets[j],"/subject_", sets[j], ".txt"), collapse = ""), col.names = colname[1]) #produces a vector
   activityJ <- read.table(paste(c("./", "UCI HAR Dataset/", sets[j],"/y_", sets[j], ".txt"), collapse = ""), col.names = colname[2]) #produces a vector
   
@@ -65,3 +70,4 @@ tidydata <- dcast(dataMelt, subject + activitylabel ~ variable, mean)
 
 # Write tidy data set to a file
 write.table(tidydata, file = "tidydata.txt",row.names=FALSE)
+

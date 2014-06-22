@@ -1,5 +1,5 @@
 ######Coursera, Getting and Cleaning Data: Class project
-####Code book 
+###Code book 
 This code book describes the variables, the data, and transformations performed to clean up the data.
 
 The [tidydata.txt](https://s3.amazonaws.com/coursera-uploads/user-716fd32e651d109067146440/972137/asst-3/582f29f0fa1511e39d691d043df393b4.txt) dataset includes the following variables:
