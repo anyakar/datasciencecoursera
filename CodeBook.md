@@ -36,62 +36,62 @@ where
     numeric
     -0.0115359 .. 0.0049223
 
-bodyaccxsd
+######bodyaccxsd
   standard deviation statistic for the body acceleration measured on the x axis during the activity
     numeric
     0.002685 .. 0.527934
 
-bodyaccymean
+######bodyaccymean
   mean statistic for the body acceleration measured on the y axis during the activity
     numeric
     -0.01226 .. 0.008303
 
-bodyaccysd
+######bodyaccysd
   standard deviation statistic for the body acceleration measured on the y axis during the activity
     numeric
     0.003387 .. 0.276867
 
-bodyacczmean
+######bodyacczmean
   mean statistic for the body acceleration measured on the y axis during the activity
     numeric
     -0.01460 .. 0.01088
 
-bodyacczsd
+######bodyacczsd
   standard deviation statistic for the body acceleration measured on the z axis during the activity
     numeric
     0.005225 .. 0.291242
   
-bodygyroxmean
+######bodygyroxmean
   mean statistic for angular velocity from the gyroscope measured on the x axis during the activity
     numeric
     -0.183684 .. 0.227288
     
-bodygyroxsd
+######bodygyroxsd
   standard deviation statistic for angular velocity from the gyroscope measured on the x axis during the activity
     numeric
     0.006657 .. 1.101257
 
-bodygyroymean
+######bodygyroymean
   mean statistic for angular velocity from the gyroscope measured on the y axis during the activity
     numeric
     -0.05863 .. 0.04597
 
-bodygyroysd
+######bodygyroysd
   standard deviation statistic for angular velocity from the gyroscope measured on the y axis during the activity
     numeric
     0.006418 .. 1.127879
 
-bodygyrozmean
+######bodygyrozmean
   mean statistic for angular velocity from the gyroscope measured on the z axis during the activity
     numeric
     -0.0702777 .. 0.0410588 
 
-bodygyrozsd
+######bodygyrozsd
   standard deviation statistic for angular velocity from the gyroscope measured on the z axis during the activity
     numeric
     0.009159 .. 0.756929
 
-totalaccxmean
+######totalaccxmean
   mean statistic for the total body acceleration measured on the x axis during the activity
     numeric
     -0.1462 .. 1.0250
