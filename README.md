@@ -1,8 +1,7 @@
-Coursera, Getting and Cleaning Data: 
-Class project
-
 ## READ ME
 
+Coursera, Getting and Cleaning Data: 
+Class project
 
 This script assumes the data is either in a zip file "UCI HAR Dataset.zip" or in a folder called "UCI HAR Dataset" in the current working directory.
 
