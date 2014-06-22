@@ -5,26 +5,28 @@ This code book describes the variables, the data, and transformations performed 
 
 The "tidydata.txt" dataset includes the following variables:
 
-**subject - identifies the subject who performed the activity by ID, ranges from 1 to 30 
-**activitylabel - labels activities that were performed during the study
+- **subject** - identifies the subject who performed the activity by ID, ranges from 1 to 30 
+- **activitylabel** - labels activities that were performed during the study
 
 All measurements were averaged for each subject and each activity 
-**bodyacc[axis][summary statistic] - statistics for triaxial body acceleration measurements 
-**bodygyro[axis][summary statistic] - statistics for triaxial angular velocity from the gyroscope 
-**totalacc[axis][summary statistic] - statistics for triaxial total boy acceleration 
+
+- **bodyacc[axis][summary statistic]** - statistics for triaxial body acceleration measurements 
+- **bodygyro[axis][summary statistic]** - statistics for triaxial angular velocity from the gyroscope 
+- **totalacc[axis][summary statistic]** - statistics for triaxial total boy acceleration 
 
 where
-**[axis] - x, y or z axis, denoted by "x", "y", "z" in the name of variable 
-**[summary statistic] - mean or standard deviation, denoted by "mean" or "sd" in the name of variable
+
+- **[axis]** - x, y or z axis, denoted by "x", "y", "z" in the name of variable 
+- **[summary statistic]** - mean or standard deviation, denoted by "mean" or "sd" in the name of variable
 
 ###Data dictionary
 
-######subject
+#####subject
   ID of the subject who performed the activity in the study, ranges from 1 to 30
 ```
     1 .. 30 .subject ID
 ```    
-######activitylabel
+#####activitylabel
 acitivity performed, based on the activity ID from original data files and a mapping of IDs to activity labels   
 ```
     laying            .laying
@@ -34,7 +36,7 @@ acitivity performed, based on the activity ID from original data files and a map
     walkingdownstairs .walking downstairs
     walkingustairs    .walking upstairs
 ```
-######bodyaccxmean
+#####bodyaccxmean
 mean statistic for the body acceleration measured on the x axis for all observations for a given subject and a given activity
 ``` 
     numeric
