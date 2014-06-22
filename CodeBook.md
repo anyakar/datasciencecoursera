@@ -1,14 +1,13 @@
-Code book 
-========================================================
-
+###Code book 
+######Coursera, Getting and Cleaning Data: Class project
 This code book describes the variables, the data, and transformations performed to clean up the data.
 
-The "tidydata.txt" dataset includes the following variables:
+The [tidydata.txt](https://s3.amazonaws.com/coursera-uploads/user-716fd32e651d109067146440/972137/asst-3/582f29f0fa1511e39d691d043df393b4.txt) dataset includes the following variables:
 
 - **subject** - identifies the subject who performed the activity by ID, ranges from 1 to 30 
 - **activitylabel** - labels activities that were performed during the study
 
-All measurements were averaged for each subject and each activity 
+Measurements for all observations were averaged for each subject and each activity:
 
 - **bodyacc[axis][summary statistic]** - statistics for triaxial body acceleration measurements 
 - **bodygyro[axis][summary statistic]** - statistics for triaxial angular velocity from the gyroscope 
