@@ -49,13 +49,12 @@ for (j in 1:2){
 }
 
 # Convert the resulting list of 4 data frames to a tidy data frame 
-# Need to correct the factor columns
 data <- cbind(rbind(data.frame(tempData[1]), data.frame(tempData[2])), rbind(data.frame(tempData[3]), data.frame(tempData[4])))
 data = merge(activityLabels, data, by.x="activityid", by.y="activityid")
 data$subject <- as.factor(data$subject)
 data$activityid <- as.factor(data$activityid)
 
-# Resulting "data" data frame holds 10299 observations of 22 variables -  4 id variables + 18 measurable variables.
+# Resulting "data" data frame holds 10299 observations of 22 variables -  4 id variables + 18 measured variables.
 
 # Melting the dataset into a tall and skiny dataset with subject and activity label as ID variables and mean and SD of 9 as measure variables. The resulting dataset holds 185382 observations of 4 variables. 
 library(reshape2)
