@@ -3,10 +3,10 @@
 
 # Checking whether the dataset is present in the working directory
 if (!file.exists("UCI HAR Dataset")) {
-  if (!file.exists("getdata_projectfiles_UCI HAR Dataset.zip")) {
+  if (!file.exists("UCI HAR Dataset.zip")) {
     stop("Can't find 'UCI HAR Dataset' folder or zip file. Please download the dataset to your working directory and re-run this script.")
   } else {
-    unzip("getdata_projectfiles_UCI HAR Dataset.zip")
+    unzip("UCI HAR Dataset.zip")
   }
 }
 
@@ -17,16 +17,13 @@ sets = c("train", "test")
 data <- data.frame()
 tempData <- list()
 colname = c("subject","activityid","activitylabel")
-activityLabels <- data.frame(c(1:6), c("walking", "walkingupstairs", "walkingdownstairs", "sitting", "standing", "laying"))  #, colClasses = c("factor", "factor")
+activityLabels <- data.frame(c(1:6), c("walking", "walkingupstairs", "walkingdownstairs", "sitting", "standing", "laying"))  
 for (j in 1:2){ 
   colnames(activityLabels) = colname[2:3]
   subjectJ <- read.table(paste(c("./", "UCI HAR Dataset/", sets[j],"/subject_", sets[j], ".txt"), collapse = ""), col.names = colname[1]) #produces a vector
   activityJ <- read.table(paste(c("./", "UCI HAR Dataset/", sets[j],"/y_", sets[j], ".txt"), collapse = ""), col.names = colname[2]) #produces a vector
   
   tempData[j] = list(data.frame(subject=subjectJ, activityid=activityJ, set=c(sets[j])))
-  # NOT WORKING
-  #colClasses(tempData[j]) = c("factor")
-  #tempData[j] = list(data.frame(c(subject=subjectJ, activityid=activityJ, set=c(sets[j]), colClasses =c("factor", "factor","factor"))))
   
   # For each of the observations for a given variable, find mean and standard deviation and add them to the tidy dataset, first for training set (train) and then for test set (test).
   temp <- data.frame()
@@ -38,11 +35,11 @@ for (j in 1:2){
     temp <- read.table(paste(c("./", "UCI HAR Dataset/", sets[j], "/Inertial Signals/", files[i], sets[j], ".txt"), collapse = ""))
     temp$Mean <- rowMeans(temp)
     temp$Sd <- apply(temp, 1, sd, na.rm = TRUE) #1 is for rows
-    # remove all columns except for mean and sd (should really use names here)
+    # remove all columns except for mean and sd 
     temp <- temp[,129:130]
     # rename columns
     tempcolnameMean = gsub("_", "", paste(c(files[i], "mean"), collapse = ""))
-    colnames(temp)[sum(1)] <- tempcolnameMean #not ideal, would rather do it by name - temp$Mean, using cbind perhaps - later
+    colnames(temp)[sum(1)] <- tempcolnameMean 
     tempcolnameSd = gsub("_", "", paste(c(files[i], "sd"), collapse = ""))
     colnames(temp)[sum(2)] <- tempcolnameSd
     tempnames <- c(tempnames, tempcolnameMean, tempcolnameSd)
@@ -55,21 +52,17 @@ for (j in 1:2){
 # Need to correct the factor columns
 data <- cbind(rbind(data.frame(tempData[1]), data.frame(tempData[2])), rbind(data.frame(tempData[3]), data.frame(tempData[4])))
 data = merge(activityLabels, data, by.x="activityid", by.y="activityid")
-table(data$subject, data$activitylabel)
+data$subject <- as.factor(data$subject)
+data$activityid <- as.factor(data$activityid)
 
-# resulting "data" data frame holds 10299 observations of 22 variables -  4 id variables + 18 measurable variables.
-
-# ordering "data" by subject, activity; 2 ways -- not working?:
-#data2 <- data2[order(data2$V1, data2$activityid),] #data$subject
-#data <- arrange(data, data$V1, data$activityid) #data$subject
+# Resulting "data" data frame holds 10299 observations of 22 variables -  4 id variables + 18 measurable variables.
 
 # Melting the dataset into a tall and skiny dataset with subject and activity label as ID variables and mean and SD of 9 as measure variables. The resulting dataset holds 185382 observations of 4 variables. 
 library(reshape2)
 dataMelt <- melt(data, id=c("subject","activitylabel"),  measure.vars=names(data[5:22]))
 
-# Summary table - casting by activity label - mean of each variable
-# ! subject needs to be a FACTOR
+# Summary - casting by subject, activity label - mean of each variable
 tidydata <- dcast(dataMelt, subject + activitylabel ~ variable, mean)
 
 # Write tidy data set to a file
-write.csv(tidydata, file = "tidydata.csv",row.names=FALSE)
+write.table(tidydata, file = "tidydata.txt",row.names=FALSE)
