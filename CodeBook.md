@@ -88,46 +88,55 @@ standard deviation statistic for the body acceleration measured on the z axis du
 ```
 ######bodygyroysd
   standard deviation statistic for angular velocity from the gyroscope measured on the y axis during the activity
-```    numeric
+```
+    numeric
     0.006418 .. 1.127879
 ```
 ######bodygyrozmean
   mean statistic for angular velocity from the gyroscope measured on the z axis during the activity
-```    numeric
+```
+    numeric
     -0.0702777 .. 0.0410588 
 ```
 ######bodygyrozsd
   standard deviation statistic for angular velocity from the gyroscope measured on the z axis during the activity
-```    numeric
+```
+    numeric
     0.009159 .. 0.756929
 ```
 ######totalaccxmean
   mean statistic for the total body acceleration measured on the x axis during the activity
-```    numeric
+```
+    numeric
     -0.1462 .. 1.0250
 ```
 ######totalaccxsd
   standard deviation statistic for the total body acceleration measured on the x axis during the activity
-```    numeric
+```
+    numeric
     0.002398 .. 0.527467
 ```
 ######totalaccymean
   mean statistic for the total body acceleration measured on the y axis during the activity
-```    numeric
+```
+    numeric
     -0.467050 .. 0.977055
 ```
 ######totalaccysd
   standard deviation statistic for the total body acceleration measured on the y axis during the activity
-```    numeric
+```
+    numeric
     0.002864 .. 0.275566
 ```
 ######totalacczmean
   mean statistic for the total body acceleration measured on the z axis during the activity
-```    numeric
+```
+    numeric
     -0.49337 .. 0.93605
 ```
 ######totalacczsd
   standard deviation statistic for the total body acceleration measured on the z axis during the activity
-```    numeric
+```
+    numeric
     0.004009 .. 0.285557
 ```
