@@ -15,13 +15,13 @@ where
 [axis] - x, y or z axis, denoted by "x", "y", "z" in the name of variable 
 [summary statistic] - mean or standard deviation, denoted by "mean" or "sd" in the name of variable
 
-Data dictionary
+###Data dictionary
 
-subject
+######subject
   ID of the subject who performed the activity in the study, ranges from 1 to 30
     1 .. 30 .subject ID
     
-activitylabel
+######activitylabel
   acitivity performed, factor variable 
     laying            .laying
     sitting           .sitting
@@ -30,7 +30,7 @@ activitylabel
     walkingdownstairs .walking downstairs
     walkingustairs    .walking upstairs
 
-bodyaccxmean
+######bodyaccxmean
   mean statistic for the body acceleration measured on the x axis during the activity
   computed 
     numeric
