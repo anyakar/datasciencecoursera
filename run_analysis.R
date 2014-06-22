@@ -14,8 +14,9 @@ data <- data.frame()
 tempData <- list()
 sets = c("train", "test")
 colname = c("subject","activityid","activitylabel")
+files = c("body_acc_x_", "body_acc_y_", "body_acc_z_", "body_gyro_x_", "body_gyro_y_", "body_gyro_z_", "total_acc_x_", "total_acc_y_", "total_acc_z_")
 
-# Read in activity labels and clean up data -- lower case for the labels and remove underscores
+# Read in activity labels and clean them up -- lower case for the labels and remove underscores
 activityLabels <- read.table("./UCI HAR Dataset/activity_labels.txt", col.names = colname[2:3])
 activityLabels$activitylabel <- tolower(levels(activityLabels$activitylabel))
 activityLabels$activitylabel <- gsub("_", "", activityLabels$activitylabel)
@@ -33,10 +34,8 @@ for (j in 1:2){
   # For each of the observations for a given variable, find mean and standard deviation and add them to the tidy dataset, first for training set (train) and then for test set (test).
   temp <- data.frame()
   temp2 <- data.frame()
-  #tempData <- data.frame()
   tempnames <- c()
   for (i in 1:9) {
-    files = c("body_acc_x_", "body_acc_y_", "body_acc_z_", "body_gyro_x_", "body_gyro_y_", "body_gyro_z_", "total_acc_x_", "total_acc_y_", "total_acc_z_")
     temp <- read.table(paste(c("./", "UCI HAR Dataset/", sets[j], "/Inertial Signals/", files[i], sets[j], ".txt"), collapse = ""))
     temp$Mean <- rowMeans(temp)
     temp$Sd <- apply(temp, 1, sd, na.rm = TRUE) #1 is for rows
@@ -50,11 +49,13 @@ for (j in 1:2){
     tempnames <- c(tempnames, tempcolnameMean, tempcolnameSd)
     if (i==1) {temp2 <- temp} else {temp2 <- cbind(temp2, temp)}
   }
+  # Add created data frame into the large list containg all read data frames
   tempData[j+2] <- list(temp2)
 }
 
 # Convert the resulting list of 4 data frames to a tidy data frame 
 data <- cbind(rbind(data.frame(tempData[1]), data.frame(tempData[2])), rbind(data.frame(tempData[3]), data.frame(tempData[4])))
+# Add descriptive activity labels by merging based on activity ID
 data = merge(activityLabels, data, by.x="activityid", by.y="activityid")
 data$subject <- as.factor(data$subject)
 data$activityid <- as.factor(data$activityid)
